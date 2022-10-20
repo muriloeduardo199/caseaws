@@ -5,9 +5,17 @@ import os
 from main.main import teste
 
 
+"""For acess with crendials"""
+# aws_access_key_id=os.environ.get('ACCESS_ID'),
+# aws_secret_access_key= os.environ.get('ACCESS_KEY')
 
 
 s3 = boto3.resource('s3')
+
+
+"""Create the  bucket_name"""
+# bucket_name = 'case-aws'
+# s3.create_bucket(Bucket='caseaws')
 
 
 
@@ -27,6 +35,7 @@ def upload_file(file_name: teste, bucket, object_name=None):
     # Upload the file
     s3_client = boto3.client('s3')
     try:
+        # s3.Object('mybucket', file_name).put(Body=open('/tmp/hello.txt', 'rb'))
         response = s3_client.upload_file(file_name, bucket, object_name)
     except ClientError as e:
         logging.error(e)
